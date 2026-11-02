@@ -1,0 +1,4 @@
+# fertige Plugins (kommen als GitHub-Release, nicht ins Repository)
+dist/
+compare_js.txt
+compare_cpp.txt

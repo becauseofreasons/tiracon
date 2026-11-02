@@ -1,0 +1,16 @@
+# Ins Repository kommt nur das Plugin. Alles andere in diesem Ordner bleibt lokal:
+# Firmware-Analyse, Quelltext der Firmware, EPROM-Dumps, Schaltpläne, Service-Handbuch, WebApp.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/THIRD-PARTY-NOTICES.md
+!/img/
+!/vst3/
+# im Plugin-Ordner nicht: fertige Plugins (kommen als GitHub-Release) und Arbeitsnotizen
+/vst3/dist/
+/vst3/Fragenkatalog.md
+/vst3/PROTOKOLL_WebApp_zu_VST3.md
+/vst3/*.skill
+build*/
+.DS_Store

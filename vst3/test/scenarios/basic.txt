@@ -1,0 +1,40 @@
+# Comparison scenario: <ms> <command> [args], '#' starts a comment.
+# Commands: every <ms> | device <serial> | ideal | midi <hex bytes> | blp <code hex> <0|1> | end
+every 50
+device 1266
+# boot, then AUTO TUNE (key 1Bh)
+1500 blp 1B 1
+1620 blp 1B 0
+# chord with different velocities
+7000 midi 90 3C 64
+7000 midi 90 40 30
+7000 midi 90 43 7F
+# CC71 cutoff, CC72 resonance, pitch bend
+8000 midi B0 47 20
+8100 midi B0 47 60
+8150 midi B0 48 50
+8200 midi E0 00 60
+8400 midi E0 7F 7F
+9000 midi 80 3C 40
+9000 midi 80 40 40
+9000 midi 80 43 40
+9200 midi E0 00 40
+# program change: P84 on via CC84 (value 60h = 1), then program change 9 (= program 22)
+9500 midi B0 54 60
+9600 midi C0 09
+10000 midi 90 30 64
+10300 midi 90 34 64
+11000 midi 80 30 40
+11000 midi 80 34 40
+# value keys on the panel: PROG/PARAMETER, 7, 1 (= P71), VALUE UP x2
+11500 blp 00 1
+11600 blp 00 0
+11700 blp 1D 1
+11800 blp 1D 0
+11900 blp 05 1
+12000 blp 05 0
+12100 blp 10 1
+12200 blp 10 0
+12300 blp 10 1
+12400 blp 10 0
+13000 end

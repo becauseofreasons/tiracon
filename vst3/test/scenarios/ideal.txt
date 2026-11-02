@@ -1,0 +1,14 @@
+# Ideal unit, notes right after boot without AUTO TUNE, unison and velocity via CC
+every 50
+ideal
+2000 midi B0 25 60
+2000 midi B0 26 7F
+2500 midi 90 3C 7F
+2500 midi 90 48 20
+3500 midi 80 3C 40
+3500 midi 80 48 40
+4000 midi B0 47 7F
+4000 midi B0 48 7F
+4200 midi 90 24 64
+5200 midi 80 24 40
+6500 end
