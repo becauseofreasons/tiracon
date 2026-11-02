@@ -124,8 +124,9 @@ void MultiEngine::render(float* out, int samples) {
     e[size_t(i)]->render(scratch.data(), samples);
     for (int k = 0; k < samples; k++) out[k] += scratch[size_t(k)];
   }
-  // several units summed: about the loudness of one for a single note, soft limit like the ALP output
-  double g = 1.0 / std::sqrt(double(n));
+  // several units summed, then a soft limit like the ALP output. Gain n^-1/4 (-1.5/-3/-4.5 dB for 2/4/8 units):
+  // a single note gets only a little quieter, full chords (summing like sqrt(n)) a little louder, tanh catches the peaks
+  double g = 1.0 / std::sqrt(std::sqrt(double(n)));
   for (int k = 0; k < samples; k++) out[k] = float(std::tanh(out[k] * g));
   // the other instances' feedback is not needed (instance 1 speaks for all)
   Engine::Change dummy[128];

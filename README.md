@@ -46,6 +46,8 @@ Eingebaut ist eine erweiterte Fassung der Originalfirmware. Der Sequencer ist en
 Über das Menü „Stimmen“ in der Kopfzeile laufen 1, 2, 4 oder 8 vollständige Geräte nebeneinander, also 6, 12, 24
 oder 48 Stimmen. Jedes Gerät hat die unveränderte Firmware und eigene Bauteilwerte. Noten werden verteilt, Parameter
 und Programme gelten für alle Geräte. 48 Stimmen benötigen etwa einen halben CPU-Kern.
+Die Summe wird leicht abgesenkt und weich begrenzt, damit volle Akkorde nicht übersteuern: Ein einzelner Ton ist bei
+12, 24 und 48 Stimmen um 1,5, 3 und 4,5 dB leiser als bei 6 Stimmen.
 
 ### Speicher (RAM)
 
@@ -189,7 +191,9 @@ The built-in firmware is an extended version of the original. The sequencer has 
 
 The "Stimmen" (voices) menu in the header runs 1, 2, 4 or 8 complete instruments side by side, i.e. 6, 12, 24 or 48
 voices. Each instrument has the unmodified firmware and its own component values. Notes are distributed; parameters
-and programs apply to all instruments. 48 voices take about half a CPU core.
+and programs apply to all instruments. 48 voices take about half a CPU core. The sum is slightly attenuated
+and soft-limited so that full chords do not clip: a single note is 1.5, 3 and 4.5 dB quieter at 12, 24 and 48 voices
+than at 6 voices.
 
 ### Memory (RAM)
 

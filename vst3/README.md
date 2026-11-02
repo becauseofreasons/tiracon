@@ -19,7 +19,7 @@ Einzelheiten zum Verhalten:
   (`Engine::powerOnRestoring`). Ein einfacher Reset bleibt in Programm 11.
 * Mehrere Geräte (12/24/48 Stimmen): Noten an das Gerät mit den wenigsten gehaltenen Noten (bei Gleichstand reihum,
   Unison P37 berücksichtigt), Note-Off an dasselbe. Parameter, Pitch Bend, Programme und Tasten an alle; alle 150 ms
-  werden Abweichungen angeglichen. Summe mit tanh(x/√n), mono.
+  werden Abweichungen angeglichen. Summe mit tanh(x/n^¼), mono (einzelne Töne −1,5/−3/−4,5 dB bei 2/4/8 Geräten).
 * Einstellungen je Benutzer: `%APPDATA%\Tiracon\settings.txt` bzw. `~/.config/Tiracon/settings.txt`.
 
 ## Bauen (Linux)
