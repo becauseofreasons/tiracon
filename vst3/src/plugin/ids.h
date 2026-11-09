@@ -17,7 +17,7 @@ enum : Steinberg::Vst::ParamID {
 
 constexpr const char* kVendor = "BecauseOfReasons";
 constexpr const char* kPluginName = "Tiracon";
-constexpr const char* kVersion = "1.0.0";
+constexpr const char* kVersion = "1.0.1";
 
 // processor state (little endian): "TRKN", u32 version, 2048 bytes RAM, u32 length + serial, f64 volume, u32 instances
 constexpr Steinberg::uint32 kStateMagic = 0x4E4B5254;   // "TRKN"

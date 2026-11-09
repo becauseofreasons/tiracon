@@ -186,6 +186,16 @@ int main(int argc, char** argv) {
   comp->setActive(false);
   data.unprepare();
   provider = nullptr;
+
+  // hosts that skip terminate() (or call initialize() twice) during the plugin scan:
+  // before 1.0.1 the running writer thread ended the whole process here
+  {
+    auto raw = factory.createInstance<IComponent>(info.ID());
+    check(raw && raw->initialize(static_cast<FUnknown*>(&host)) == kResultOk, "Scan: initialize");
+    if (raw) raw->initialize(static_cast<FUnknown*>(&host));
+    raw = nullptr;                                   // released without terminate()
+    check(true, "Scan: Freigabe ohne terminate() ohne Absturz");
+  }
   PluginContextFactory::instance().setPluginContext(nullptr);
   if (argc > 2) { writeWav(argv[2], out); std::printf("geschrieben: %s\n", argv[2]); }
   std::printf(failures ? "FEHLER: %d Prüfungen\n" : "alle Prüfungen ok\n", failures);

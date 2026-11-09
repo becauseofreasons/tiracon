@@ -60,6 +60,7 @@ private:
   void outputChanges(Steinberg::Vst::IParameterChanges* out);
   void applyDevice(const std::string& serial);
   void writerLoop();
+  void stopWriter();
 };
 
 } // namespace tiracon

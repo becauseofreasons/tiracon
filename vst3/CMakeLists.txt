@@ -11,7 +11,7 @@ option(TIRACON_BUILD_PLUGIN "Build the VST3 plugin (needs the VST3 SDK)" ON)
 set(VST3_SDK_ROOT "$ENV{HOME}/SDKs/vst3sdk" CACHE PATH "Steinberg VST3 SDK folder")
 set(TIRACON_ROM "${CMAKE_CURRENT_SOURCE_DIR}/firmware/tiracon_mod.bin" CACHE FILEPATH "Firmware built into the plugin")
 
-project(Tiracon VERSION 1.0.0 LANGUAGES C CXX)
+project(Tiracon VERSION 1.0.1 LANGUAGES C CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)

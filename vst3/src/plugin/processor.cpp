@@ -33,7 +33,10 @@ Processor::Processor() {
   bridge = new UiBridge;
 }
 
+// some hosts release the component without terminate(): stop the writer here too,
+// a still running std::thread would end the whole process (std::terminate)
 Processor::~Processor() {
+  stopWriter();
   if (bridge) bridge->release();
 }
 
@@ -42,18 +45,24 @@ tresult PLUGIN_API Processor::initialize(FUnknown* context) {
   if (r != kResultOk) return r;
   addAudioOutput(STR16("Out"), SpeakerArr::kStereo);
   addEventInput(STR16("MIDI In"), 16);
-  writerStop = false;
-  writer = std::thread([this] { writerLoop(); });
+  if (!writer.joinable()) {                   // initialize() twice: keep the running thread
+    writerStop = false;
+    writer = std::thread([this] { writerLoop(); });
+  }
   return kResultOk;
 }
 
-tresult PLUGIN_API Processor::terminate() {
+void Processor::stopWriter() {
   {
     std::lock_guard<std::mutex> l(writerMtx);
     writerStop = true;
   }
   writerCv.notify_all();
   if (writer.joinable()) writer.join();
+}
+
+tresult PLUGIN_API Processor::terminate() {
+  stopWriter();
   return AudioEffect::terminate();
 }
 
